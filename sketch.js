@@ -1,4 +1,7 @@
-//var test;
+//var innerSound;
+//var movingSound;
+//var outsideSound;
+
 var sliderVolume;
 var sliderRate;
 var sliderPan;
@@ -8,19 +11,22 @@ var volHistory = [];
 function setup() {
   createCanvas(400, 400);
 
-  testSound = loadSound("testSound.mp3", loaded);
+  // testSound = loadSound("testSound.mp3", loaded);
+  innerSound = loadSound("innerSound.mp3", loaded);
+  movingSound = loadSound("movingSound.mp3", loaded);
+  outsideSound = loadSound("outsideSound.mp3", loaded);
 
   sliderVolume = createSlider(0, 1, 0.5, 0.01);
   sliderRate = createSlider(0, 2, 1, 0.01);
   sliderPan = createSlider(-1, 1, 0, 0.01);
 
   amp = new p5.Amplitude();
-
-  // background(0);
 }
 
 function loaded() {
-  testSound.play();
+  innerSound.play();
+  movingSound.play();
+  outsideSound.play();
 }
 
 function draw() {

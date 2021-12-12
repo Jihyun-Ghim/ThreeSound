@@ -44,24 +44,18 @@ function draw() {
   stroke(255);
   noFill();
 
+  translate(width / 2, height / 2);
   beginShape();
   for (var i = 0; i < 360; i++){
-    r = 100;
+    var r = map(volhistory[i], 0, 1, 10, 100);
     var x = r * cos(i);
     var y = r * sin(i);
-    //var y = map(volhistory[i], 0, 1, height, 0);
+
     vertex(x, y);
   }
   endShape();
 
-  beginShape();
-  for (var i = 0; i < volhistory.length; i++){
-    var y = map(volhistory[i], 0, 1, height, 0);
-    vertex(i, y);
-  }
-  endShape(); //볼륨에 따라 선 그리기
-  pop();
-  if (volhistory.length > width - 50) {
+  if (volhistory.length > 360) {
     volhistory.splice(0, 1);
   }  //길이 지나면 기존에 있던 거 없애고 새로 시작하기
 }
